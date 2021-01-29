@@ -1,0 +1,46 @@
+(MAIN-CLASS (ID Collatz))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (NEW-INSTANCE (ID Computer) DOT (FUN-CALL (ID compute))))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID Computer))  {
+
+
+	(MTD-DECL INT (ID compute) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID x))
+
+	(EQSIGN (ID x) INTLIT 13)
+
+	(WHILE (ID x) < INTLIT 1)
+	(IF (ID x) MINUS ((ID x) DIV INTLIT 2)) TIMES INTLIT 2)) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID x) (ID x) TIMES INTLIT 3) PLUS INTLIT 1))
+
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID x) (ID x) DIV INTLIT 2))
+
+
+	}
+
+
+	)
+
+
+	(RETURN (ID x))
+
+	}
+
+
+}

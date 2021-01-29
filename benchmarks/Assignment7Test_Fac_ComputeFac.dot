@@ -1,0 +1,7 @@
+digraph ComputeFac {
+N1 -> N3 [label=" ([num < 1])"];
+N3 -> N5 [label=" num_aux = 1"];
+N1 -> N4 [label=" (![num < 1])"];
+N4 -> N5 [label=" num_aux = num * (this.ComputeFac(num - 1))"];
+}
+

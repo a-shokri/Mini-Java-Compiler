@@ -1,0 +1,52 @@
+class
+public
+static
+main
+extends
+if
+else
+while
+for
+System
+out
+println
+new
+this
+length
+sidef
+return
+int
+boolean
+void
+String
+(
+)
+[
+]
+{
+}
+;
+,
+.
+-
++
+/
+*
+%
+!
+&&
+||
+true
+false
+_th1s_is_an_idenfifi3r
+"this is a string literal"
+123456789
+<
+>
+=
+==
+// this is a line comment
+/*   this
+ a
+ block comment
+ */

@@ -1,0 +1,47 @@
+<project name="Compiler" default="main" basedir=".">
+
+    <description>
+        Compiler Project - Name Analyzer Phase
+    </description>
+    <!-- set global properties for this build -->
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+
+    <target name="makedir">
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+    </target>
+
+    <target name="compile" depends="init, clean, makedir"
+            description="compile the source">
+        <!-- Compile the java code from ${src} into ${build} -->
+        <javac srcdir="${src}" destdir="${build}"/>
+    </target>
+
+    <target name="jar" depends="compile">Gottlieb, Drew - Operators.emj
+        Gottlieb, Drew - TreeFlip.emj
+        <jar jarfile="${dist}/lib/compiler.jar" basedir="${build}">
+            <manifest>
+                <attribute name="Main-Class" value="CompilerMain"/>
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="main" depends="compile, jar">
+        <description>Main target</description>
+    </target>
+
+</project>

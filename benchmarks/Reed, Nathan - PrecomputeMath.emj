@@ -1,0 +1,20 @@
+//author: Nathan Reed (nmr7393)
+//name  : PrecomputeMath
+//goal  : Check if compiler can optimize out easily precalculatable math
+
+class Factorial {
+	public static void main(String[] mainarg){
+		System.out.println(
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9 +
+			1 * 2 * 3 * 4 * 5 * 6 * 7 * 8 * 9
+		);
+	}
+}

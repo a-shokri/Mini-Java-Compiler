@@ -1,0 +1,31 @@
+//author: Akhil Pawar & Ruiyang Xu
+
+ class Quick_sort{
+    public static void main(String[] args){
+        Sort s = new Sort();
+        int[] input_list = {5,3,8,4,9};
+        int[] sorted_list = new int[5];
+        sorted_list = s.do_sort(input_list);
+        for(int k = 0; k < sorted_list.length; k++){
+            System.out.println(sorted_list[k]);
+        }
+    }
+}
+
+class Sort{
+
+
+    public int[] do_sort(int[] list){
+        for(int i = 0; i<5; i++){
+            for(int j = i+1; j<5; j++){
+                int temp = 0;
+                if( list[j] < list[i]){
+                    temp = list[i];
+                    list[i] = list[j];
+                    list[j] = temp;
+                    break;
+                }
+            }
+        }
+    }
+}

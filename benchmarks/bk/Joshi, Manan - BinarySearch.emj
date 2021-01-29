@@ -1,0 +1,70 @@
+//author: Ali Shokri & Manan Joshi
+
+/*
+    This class performs binary search on a given array of numbers.
+*/
+
+public class BinarySearch {
+
+    public static void main(String[] args) {
+
+        int[] elementsArray = {86, 97, 77, 39, 84, 45, 86, 21, 13, 77};
+
+        int n = elementsArray.length;
+
+        int searchElement = 10;
+
+        int result = new BinarySearch().binarySearch(bubbleSort(elements), 0, n - 1, searchElement);
+
+        if (result == -1)
+            System.out.println("Element not present");
+        else
+            System.out.println("Element found at index " +
+                    result);
+
+    }
+
+
+    int[] bubbleSort(int[] elements) {
+
+            int n = elements.length;
+
+            for (int i = 0; i < n - 1; i++) {
+
+                for (int j = 0; j < n - i - 1; j++) {
+
+                    if (elements[j] > elements[j + 1]) {
+                        // swap temp and arr[i]
+                        int temp = elements[j];
+                        elements[j] = elements[j + 1];
+                        elements[j + 1] = temp;
+
+                    }
+                }
+            }
+
+        return elements;
+
+    }
+
+    int binarySearch(int elements[], int left, int right, int searchElement) {
+
+        if (right >= left) {
+            int mid = left + (right - left) / 2;
+
+            if (elements[mid] == searchElement)
+                return mid;
+
+            if (elements[mid] > searchElement)
+                return binarySearch(elements, left, mid - 1, searchElement);
+
+            return binarySearch(elements, mid + 1, right, searchElement);
+
+        }
+
+        return -1;
+
+    }
+
+
+}

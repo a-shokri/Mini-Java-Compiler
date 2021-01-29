@@ -1,0 +1,10 @@
+digraph Print {
+N87 -> N89 [label=" ([m_hasLeft])"];
+N89 -> N91 [label=" sidef(m_left.Print())"];
+N91 -> N96 [label=" System.out.println(m_value)"];
+N96 -> N98 [label=" ([m_hasRight])"];
+N98 -> N100 [label=" sidef(m_right.Print())"];
+N96 -> N100 [label=" (![m_hasRight])"];
+N87 -> N91 [label=" (![m_hasLeft])"];
+}
+

@@ -1,0 +1,33 @@
+//author: Nathan Reed (nmr7393)
+//name  : Factorial (w/ Tail Recursion)
+//goal  : Give a simple program that can have the tail-recursion optimized
+
+class Factorial {
+	public static void main(String[] mainarg){
+		System.out.println(
+			new TRFact()
+				.factorial(8)
+		);
+	}
+}
+
+class TRFact {
+
+	public int factorialHelper (int val, int ans) {
+		
+		int result;
+
+		if (val == 0) {
+			result = ans;
+		} else {
+			result = this.factorialHelper(val-1, val*ans);
+		}
+
+		return result;
+	}
+
+	public int factorial (int value) {
+		return this.factorialHelper ( value, 1 );
+	}
+
+}

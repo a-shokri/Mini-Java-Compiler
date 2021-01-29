@@ -1,0 +1,59 @@
+//author: Ali Shokri & Manan Joshi
+
+/*
+    This class is about to check three numbers to find out whether they are a prime number or not.
+    If any of those numbers are not a prime number, then the programs provides the denominator that the
+    number is divided by.
+*/
+
+class PrimeDetector{
+    public static void main(String[] a){
+        System.out.println( "Here is the result:" + new PrimeDetect().checkNumbers() );
+    }
+}
+
+class PrimeDetect {
+
+    public String checkNumbers() {
+
+        int num1 = 15653;
+        int num2 = 15657;
+        int num3 = 15659;
+
+        String checkNumbersReport = "";
+
+        checkNumbersReport = checkNumbersReport + getReport( num1 );
+        checkNumbersReport = "\n";
+        checkNumbersReport = checkNumbersReport + getReport( num2 );
+        checkNumbersReport = "\n";
+        checkNumbersReport = checkNumbersReport + getReport( num3 );
+
+        return checkNumbersReport;
+
+    }
+
+    public String getReport( String num ) {
+
+        int dinominator = findDinominator( num );
+        String printoutMessage = num + " is ";
+        if( dinominator == 0 )
+            printoutMessage = printoutMessage + "not ";
+        printoutMessage = printoutMessage + "a prime number.";
+
+        if( dinominator > 0 )
+            printoutMessage = printoutMessage + " It is devided by " + denominator + ".";
+
+        return printoutMessage;
+
+    }
+
+    public int findDinominator(int number) {
+
+        for( double bi = 2; bi < (number / 2); bi++ )
+            if( number % bi == 0 )
+                return bi;
+        return 0;
+
+    }
+
+}

@@ -1,0 +1,216 @@
+(MAIN-CLASS (ID TreeFlip))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+(SIDEF NEW-INSTANCE (ID Program) DOT (FUN-CALL (ID Run)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID Program))  {
+
+
+	(MTD-DECL INT (ID Run) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL (ID (ID Node)) (ID tree))
+
+	(EQSIGN (ID tree) NEW-INSTANCE (ID Node) DOT (FUN-CALL (ID Init))(INTLIT 5))
+
+	(PRINTLN (STRINGLIT Original tree:))
+
+(SIDEF (ID tree) DOT (FUN-CALL (ID Print)))
+
+(SIDEF (ID tree) DOT (FUN-CALL (ID Flip)))
+
+	(PRINTLN (STRINGLIT ))
+
+	(PRINTLN (STRINGLIT Flipped tree:))
+
+(SIDEF (ID tree) DOT (FUN-CALL (ID Print)))
+
+	(RETURN INTLIT 0)
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Node))  {
+
+	(VAR-DECL BOOLEAN (ID m_hasLeft))
+
+	(VAR-DECL (ID (ID Node)) (ID m_left))
+
+	(VAR-DECL BOOLEAN (ID m_hasRight))
+
+	(VAR-DECL (ID (ID Node)) (ID m_right))
+
+	(VAR-DECL INT (ID m_value))
+
+
+	(MTD-DECL (ID (ID Node)) (ID Init) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(EQSIGN (ID m_hasLeft) FALSE)
+
+	(EQSIGN (ID m_hasRight) FALSE)
+
+	(EQSIGN (ID m_value) (ID value))
+
+	(RETURN THIS)
+
+	}
+
+	(MTD-DECL (ID (ID Node)) (ID SetLeft) (TY-ID-LIST ((ID (ID Node)) (ID node)))  {
+
+	(BLOCK
+
+	(EQSIGN (ID m_left) (ID node))
+
+	(EQSIGN (ID m_hasLeft) TRUE)
+
+	(RETURN THIS)
+
+	}
+
+	(MTD-DECL (ID (ID Node)) (ID SetRight) (TY-ID-LIST ((ID (ID Node)) (ID node)))  {
+
+	(BLOCK
+
+	(EQSIGN (ID m_right) (ID node))
+
+	(EQSIGN (ID m_hasRight) TRUE)
+
+	(RETURN THIS)
+
+	}
+
+	(MTD-DECL (ID (ID Node)) (ID Insert) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(IF (ID value) < (ID m_value)))  {
+
+	(IF (ID m_hasLeft))  {
+
+(SIDEF (ID m_left) DOT (FUN-CALL (ID Insert))((ID value)))
+
+
+	}
+
+	(ELSE)  {
+
+(SIDEF THIS DOT (FUN-CALL (ID SetLeft))(NEW-INSTANCE (ID Node) DOT (FUN-CALL (ID Init))((ID value))))
+
+
+	}
+
+
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID m_hasRight))  {
+
+(SIDEF (ID m_right) DOT (FUN-CALL (ID Insert))((ID value)))
+
+
+	}
+
+	(ELSE)  {
+
+(SIDEF THIS DOT (FUN-CALL (ID SetRight))(NEW-INSTANCE (ID Node) DOT (FUN-CALL (ID Init))((ID value))))
+
+
+	}
+
+
+
+	}
+
+
+	(RETURN THIS)
+
+	}
+
+	(MTD-DECL (ID (ID Node)) (ID Flip) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL (ID (ID Node)) (ID tempNode))
+
+	(VAR-DECL BOOLEAN (ID tempBool))
+
+	(IF (ID m_hasLeft))  {
+
+(SIDEF (ID m_left) DOT (FUN-CALL (ID Flip)))
+
+
+	}
+
+	}
+
+
+	(IF (ID m_hasRight))  {
+
+(SIDEF (ID m_right) DOT (FUN-CALL (ID Flip)))
+
+
+	}
+
+	}
+
+
+	(EQSIGN (ID tempNode) (ID m_left))
+
+	(EQSIGN (ID m_left) (ID m_right))
+
+	(EQSIGN (ID m_right) (ID tempNode))
+
+	(EQSIGN (ID tempBool) (ID m_hasLeft))
+
+	(EQSIGN (ID m_hasLeft) (ID m_hasRight))
+
+	(EQSIGN (ID m_hasRight) (ID tempBool))
+
+	(RETURN THIS)
+
+	}
+
+	(MTD-DECL INT (ID Print) (No Parameters)  {
+
+	(BLOCK
+
+	(IF (ID m_hasLeft))  {
+
+(SIDEF (ID m_left) DOT (FUN-CALL (ID Print)))
+
+
+	}
+
+	}
+
+
+	(PRINTLN ((ID m_value)))
+
+	(IF (ID m_hasRight))  {
+
+(SIDEF (ID m_right) DOT (FUN-CALL (ID Print)))
+
+
+	}
+
+	}
+
+
+	(RETURN INTLIT 0)
+
+	}
+
+
+}

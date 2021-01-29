@@ -1,0 +1,75 @@
+class Example {
+
+  public static void main(String [] args) {
+    System.out.println(new A().foo());
+    //System.out.println("Hello Friend");
+  }
+
+}
+
+/*class B extends A {
+
+  public int foo() {
+
+    //Fac dfdf;
+    String s;
+    //boolean b;
+    int[] a;
+
+    //dfdf = new Fac();
+    a = new int[5];
+    s = "Hi";
+    //b = dfdf.stop(1);
+
+    val = 42;
+
+    return val;
+
+  }
+
+}
+
+class Fac {
+
+    public int ComputeFac(int num, int num1) {
+    //Fac f;
+	int num_aux ;
+
+	//num_aux = 10;
+
+	if (num < 1)
+	    num_aux = 1 ;
+	else
+	    num_aux = num * (this.ComputeFac(num,1));
+
+	return num_aux ;
+
+    }
+
+    public boolean stop(int param1) {
+         // System.out.println("stop()");
+         return false;
+    }
+
+}*/
+
+class A {
+
+  int val;
+
+  public int foo() {
+
+      val = 10 + 5 * 90;
+
+      System.out.println(val);
+
+      if (true || val == 5)
+            val = 10;
+      else
+            val = 5;
+
+      return val;
+
+  }
+
+}

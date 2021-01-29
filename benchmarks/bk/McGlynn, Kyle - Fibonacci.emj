@@ -1,0 +1,50 @@
+/* Authors:
+ * Richard Munson
+ * Kyle McGlynn
+ */
+
+public class Fibonacci
+{
+	public int fibonacci(int n)
+	{
+		// extend the definition of Fibonacci sequence to negatives
+		boolean neg = false;
+		if (n < 0)
+		{
+			n = -n;
+			neg = true;
+		}
+
+		int i = 1;
+		int j = 0;
+		int holder = 0;
+		int count = 0;  // the counter for the loop
+
+		while (count < n)
+		{
+			holder = i + j;
+			i = j;
+			j = holder;
+		}
+
+		if (neg && n % 2 == 0)
+		{
+			holder = - holder;
+		}
+
+		// will return 0 if the integer is 0
+		return holder;
+	}
+
+	public static void main(String[] args)
+	{
+		Fibonacci test = new Fibonacci();
+
+		int fibPos = test.fibonacci(5);
+		int fibNeg = test.fibonacci(-8);
+
+		System.out.println("This is the 5th Fibonacci number!  " + fibPos);
+		System.out.println("This is the -8th Fibonacci number!  " + fibNeg);
+	}
+}
+

@@ -1,0 +1,138 @@
+
+
+
+
+//FileName: StroageOrder.emj
+
+
+ class StorageOrder {
+
+    int initialSize = 1;
+	int filled 	= 0;
+	Integer[]    data = new Integer[initialSize];
+	Integer[]    localData ;
+	static int   interatorPosition = 0;
+
+	public StorageOrder()	{
+		for (int index=0; index<data.length - 1; index++)     {
+			data[index] =  null;
+		}
+		
+	}
+	public void copy(Integer[] to, Integer[] from)	{
+		for (int index=0; index< filled ; index++)     {
+			to[index] = from[index];
+		}		
+	}
+	public void sort() {
+		if ( data.length == 1 )
+			return;
+		localData = new Integer[ filled ]; 
+		copy(localData, data);
+		for (int index=0; index<localData.length - 1; index++)     {
+		    for (int walker=0; walker<localData.length - index - 1; walker++)  {
+			Integer left = localData[walker];
+			Integer right = localData[walker+1];
+			if ( left.compareTo( right ) > 0 )        {
+				Integer tmp = localData[walker];
+				localData[walker] = localData[walker + 1];
+				localData[walker+1] = tmp;
+			}
+		    }
+		}
+               copy(data, localData);
+  	}
+	public String toInteger()	{
+		String result = "";
+		for (int index = 0; index<data.length - 1; index++)     {
+			if ( data[index] != null )
+				result = "" + index + ". " + data[index] +
+			( ( index == data.length - 1 ) ? "." : ",\n" ) + result;
+		}
+		return result;
+	}
+	public boolean add(Integer e)	{
+		Integer[] tempList = new Integer[data.length];
+		for (int index=0; index<data.length; index++)
+			tempList[index] = data[index];
+		data = new Integer[filled+1];
+		for (int index=0; index<data.length-1; index++) {
+			data[index] = tempList[index];
+		}
+		data[filled] = e;
+		filled++;
+		sort();
+		return true;
+		}
+	public boolean remove(Integer e)	{
+		for (int index = 0; index < filled; index++)     {
+			if (  data[index].compareTo(e) == 0 )	{
+				data[index] = data[filled-1];
+				data[filled-1] = null;
+				filled --;
+				sort();
+				return true;
+			}
+		}
+		return false;
+	}
+	public boolean contain(Integer e)	{
+		for (int index = 0; index <= filled; index++)     {
+			if (  data[index].compareTo(e) == 0 )
+				return true;
+		}
+		return false;
+	}
+	public int size()	{
+		return filled-1;
+	}
+	public void startFromBeginning() {
+		interatorPosition = 0;
+	}
+	public boolean hasNext()	{
+		return ( interatorPosition < filled );
+	}
+	public Integer next()	{
+		
+		return data[interatorPosition++];
+	}
+	public boolean addAll(StorageOrder c)	{
+		while ( c.hasNext() ) {
+		       add(c.next() );
+		}
+		return true;
+	}
+	public double evaluate()	{
+		double result = 0;
+		while ( hasNext() ) {
+		       Integer aInteger = next();
+		       result += 1.0 / aInteger;
+		}
+		return result;
+	}
+	public void printData() {
+		System.out.print("data = {" + data[0]);
+		for (int i = 1; i < data.length; i++)
+			System.out.print(", " + data[i]);
+		System.out.println("}");
+			
+	}
+	public static void main(String args[] )     {
+		StorageOrder aStorageOrder = new StorageOrder();
+		aStorageOrder.add(1);
+		aStorageOrder.add(0);
+		aStorageOrder.add(2);
+		aStorageOrder.printData();
+		System.out.println("aStorageOrder.evaluate(); " + aStorageOrder.evaluate() );
+		System.out.println(aStorageOrder);
+		System.out.println("aStorageOrder.contains(a)  " + aStorageOrder.contain(0));
+		System.out.println("aStorageOrder.remove(a)  " + aStorageOrder.remove(2));
+		System.out.println("aStorageOrder.remove(a)  " + aStorageOrder.remove(1));
+		System.out.println(aStorageOrder);
+		aStorageOrder.startFromBeginning();
+		while ( aStorageOrder.hasNext() ) {
+		       System.out.println("	" + aStorageOrder.next() ) ;
+		}
+
+	}
+}

@@ -1,0 +1,144 @@
+(MAIN-CLASS (ID GreatestCommonDivider))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (NEW-INSTANCE (ID GCD) DOT (FUN-CALL (ID run))(INTLIT 14400)(INTLIT 9600)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID GCD))  {
+
+	(VAR-DECL INT (ID timesDividedBy2))
+
+
+	(MTD-DECL INT (ID run) (TY-ID-LIST (INT (ID m)) (INT (ID n)))  {
+
+	(BLOCK
+
+	(EQSIGN (ID timesDividedBy2) INTLIT 1)
+
+	(RETURN THIS DOT (FUN-CALL (ID gcd))((ID m))((ID n)))
+
+	}
+
+	(MTD-DECL INT (ID gcd) (TY-ID-LIST (INT (ID m)) (INT (ID n)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL INT (ID gcdSeed))
+
+	(IF (ID m) EQUALS (ID n)))  {
+
+	(EQSIGN (ID result) (ID n))
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID gcdSeed) THIS DOT (FUN-CALL (ID gcdAllEven))((ID m))((ID n)))
+
+	(EQSIGN (ID result) (ID timesDividedBy2) TIMES (ID gcdSeed)))
+
+
+	}
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL INT (ID gcdAllEven) (TY-ID-LIST (INT (ID m)) (INT (ID n)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL INT (ID a))
+
+	(VAR-DECL INT (ID b))
+
+	(EQSIGN (ID a) (ID m) DIV INTLIT 2))
+
+	(EQSIGN (ID b) (ID n) DIV INTLIT 2))
+
+	(IF (ID a) TIMES INTLIT 2) EQUALS (ID m)) (&& (ID b) TIMES INTLIT 2) EQUALS (ID n))))  {
+
+	(EQSIGN (ID m) (ID a))
+
+	(EQSIGN (ID n) (ID b))
+
+	(EQSIGN (ID timesDividedBy2) (ID timesDividedBy2) TIMES INTLIT 2))
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID gcdAllEven))((ID m))((ID n)))
+
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID n) < (ID m)))  {
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID gcdMinus))((ID m))((ID n)))
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID gcdMinus))((ID n))((ID m)))
+
+	}
+
+
+
+	}
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL INT (ID gcdMinus) (TY-ID-LIST (INT (ID m)) (INT (ID n)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL INT (ID a))
+
+	(EQSIGN (ID a) (ID m) MINUS (ID n)))
+
+	(IF (ID a) EQUALS (ID n)))  {
+
+	(EQSIGN (ID result) (ID n))
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID a) < (ID n)))  {
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID gcdMinus))((ID n))((ID a)))
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID gcdMinus))((ID a))((ID n)))
+
+	}
+
+
+
+	}
+
+
+	(RETURN (ID result))
+
+	}
+
+
+}

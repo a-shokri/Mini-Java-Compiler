@@ -1,0 +1,387 @@
+(MAIN-CLASS (ID IntArrayList))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+(SIDEF NEW-INSTANCE (ID IAL) DOT (FUN-CALL (ID run)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID IAL))  {
+
+	(VAR-DECL INT (ID INITIAL_CAPACITY))
+
+	(VAR-DECL INT-ARRAY (ID data))
+
+	(VAR-DECL INT (ID size))
+
+
+	(MTD-DECL BOOLEAN (ID init) (No Parameters)  {
+
+	(BLOCK
+
+	(EQSIGN (ID INITIAL_CAPACITY) INTLIT 16)
+
+	(EQSIGN (ID data) NEW-INT_ARRAY(ID INITIAL_CAPACITY)))
+
+	(EQSIGN (ID size) INTLIT 0)
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID run) (No Parameters)  {
+
+	(BLOCK
+
+(SIDEF THIS DOT (FUN-CALL (ID init)))
+
+(SIDEF THIS DOT (FUN-CALL (ID test)))
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID test) (No Parameters)  {
+
+	(BLOCK
+
+(SIDEF THIS DOT (FUN-CALL (ID add))((ID size))(INTLIT 10))
+
+	(PRINTLN (STRINGLIT (1)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID add))(INTLIT 0)(INTLIT 23))
+
+	(PRINTLN (STRINGLIT (2)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID add))((ID size))(INTLIT 8))
+
+	(PRINTLN (STRINGLIT (3)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID add))((ID size))(INTLIT 24))
+
+	(PRINTLN (STRINGLIT (4)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID add))(INTLIT 2)(INTLIT 15))
+
+	(PRINTLN (STRINGLIT (5)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID add))(INTLIT 5)(INTLIT 41))
+
+	(PRINTLN (STRINGLIT (6)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID remove))(INTLIT 0))
+
+	(PRINTLN (STRINGLIT (7)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID remove))(INTLIT 2))
+
+	(PRINTLN (STRINGLIT (8)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+(SIDEF THIS DOT (FUN-CALL (ID remove))((ID size) MINUS INTLIT 1)))
+
+	(PRINTLN (STRINGLIT (9)  PLUS THIS DOT (FUN-CALL (ID toString)))))
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID add) (TY-ID-LIST (INT (ID index)) (INT (ID value)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID i))
+
+(SIDEF THIS DOT (FUN-CALL (ID ensureCapacity)))
+
+	(EQSIGN (ID i) (ID size) MINUS INTLIT 1))
+
+	(WHILE (!((ID i) < (ID index))))
+	(EQSIGN (ARRAY-ASSIGN (ID data)(ID i) PLUS INTLIT 1)(ID data)
+
+	(EQSIGN (ID i) (ID i) MINUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ARRAY-ASSIGN (ID data)(ID index)(ID value)
+
+	(EQSIGN (ID size) (ID size) PLUS INTLIT 1))
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID ensureCapacity) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID newData))
+
+	(VAR-DECL INT (ID i))
+
+	(IF (!((ID size) < (ID data)DOT LENGTH))))  {
+
+	(EQSIGN (ID newData) NEW-INT_ARRAY(ID size) TIMES INTLIT 2) PLUS INTLIT 1)))
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size) MINUS INTLIT 1)) (|| (ID i) EQUALS (ID size) MINUS INTLIT 1)))
+	(EQSIGN (ARRAY-ASSIGN (ID newData)(ID i)(ID data)
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ID data) (ID newData))
+
+
+	}
+
+	}
+
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID clear) (No Parameters)  {
+
+	(BLOCK
+
+	(EQSIGN (ID data) NEW-INT_ARRAY(ID INITIAL_CAPACITY)))
+
+	(EQSIGN (ID size) INTLIT 0)
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID contains) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL BOOLEAN (ID result))
+
+	(EQSIGN (ID result) FALSE)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size) MINUS INTLIT 1)) (|| (ID i) EQUALS (ID size) MINUS INTLIT 1)))
+	(IF (ID value) EQUALS (ID data)))  {
+
+	(EQSIGN (ID result) TRUE)
+
+	}
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL INT (ID get) (TY-ID-LIST (INT (ID index)))  {
+
+	(BLOCK
+
+	(RETURN (ID data))
+
+	}
+
+	(MTD-DECL INT (ID indexOf) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL INT (ID i))
+
+	(EQSIGN (ID result) INTLIT 0 MINUS INTLIT 1))
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size) MINUS INTLIT 1)) (|| (ID i) EQUALS (ID size) MINUS INTLIT 1)))
+	(IF (ID value) EQUALS (ID data)))  {
+
+	(EQSIGN (ID result) (ID i))
+
+	}
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL BOOLEAN (ID isEmpty) (No Parameters)  {
+
+	(BLOCK
+
+	(RETURN (ID size) EQUALS INTLIT 0))
+
+	}
+
+	(MTD-DECL INT (ID lastIndexOf) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL INT (ID i))
+
+	(EQSIGN (ID result) INTLIT 0 MINUS INTLIT 1))
+
+	(EQSIGN (ID i) (ID size) MINUS INTLIT 1))
+
+	(WHILE (!((ID i) < INTLIT 0)))
+	(IF (ID value) EQUALS (ID data)))  {
+
+	(EQSIGN (ID result) (ID i))
+
+	}
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) MINUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL INT (ID remove) (TY-ID-LIST (INT (ID index)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID value))
+
+	(VAR-DECL INT (ID j))
+
+	(EQSIGN (ID value) (ID data))
+
+	(EQSIGN (ID j) (ID index))
+
+	(WHILE (ID j) < (ID size) MINUS INTLIT 1))
+	(EQSIGN (ARRAY-ASSIGN (ID data)(ID j)(ID data)
+
+	(EQSIGN (ID j) (ID j) PLUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ARRAY-ASSIGN (ID data)(ID size) MINUS INTLIT 1)INTLIT 0
+
+	(EQSIGN (ID size) (ID size) MINUS INTLIT 1))
+
+	(RETURN (ID value))
+
+	}
+
+	(MTD-DECL INT (ID set) (TY-ID-LIST (INT (ID index)) (INT (ID value)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID old))
+
+	(EQSIGN (ID old) (ID data))
+
+	(RETURN (ID old))
+
+	}
+
+	(MTD-DECL STRING (ID toString) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL STRING (ID result))
+
+	(VAR-DECL INT (ID i))
+
+	(EQSIGN (ID result) STRINGLIT [)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size) MINUS INTLIT 1)) (|| (ID i) EQUALS (ID size) MINUS INTLIT 1)))
+	(EQSIGN (ID result) (ID result) PLUS (ID data)))
+
+	(IF (ID i) < (ID size) MINUS INTLIT 1)))  {
+
+	(EQSIGN (ID result) (ID result) PLUS STRINGLIT , ))
+
+	}
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID result) PLUS STRINGLIT ]))
+
+	}
+
+	(MTD-DECL BOOLEAN (ID trimToSize) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT-ARRAY (ID newData))
+
+	(IF (!((ID size) EQUALS (ID data)DOT LENGTH))))  {
+
+	(EQSIGN (ID newData) NEW-INT_ARRAY(ID size)))
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size) MINUS INTLIT 1)) (|| (ID i) EQUALS (ID size) MINUS INTLIT 1)))
+	(EQSIGN (ARRAY-ASSIGN (ID newData)(ID i)(ID data)
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ID data) (ID newData))
+
+
+	}
+
+	}
+
+
+	(RETURN TRUE)
+
+	}
+
+	(MTD-DECL INT (ID size) (No Parameters)  {
+
+	(BLOCK
+
+	(RETURN (ID size))
+
+	}
+
+
+}

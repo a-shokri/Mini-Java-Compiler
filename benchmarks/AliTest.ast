@@ -1,0 +1,43 @@
+(MAIN-CLASS (ID ArrayUtil))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+(SIDEF NEW-INSTANCE (ID Test) DOT (FUN-CALL (ID genArr)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID Test) EXTENDS (ID A))  {
+
+
+	(MTD-DECL INT-ARRAY (ID genArr) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID arr))
+
+	(EQSIGN (ID arr) NEW-INT_ARRAYINTLIT 3))
+
+	(RETURN (ID arr))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID A))  {
+
+	(VAR-DECL INT (ID a))
+
+
+	(MTD-DECL INT (ID a) (No Parameters)  {
+
+	(BLOCK
+
+	(RETURN INTLIT 1)
+
+	}
+
+
+}

@@ -1,0 +1,40 @@
+(MAIN-CLASS (ID Example))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (STRINGLIT Hello Friend))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID A))  {
+
+	(VAR-DECL INT (ID val))
+
+
+	(MTD-DECL INT (ID foo) (No Parameters)  {
+
+	(BLOCK
+
+	(EQSIGN (ID val) INTLIT 10)
+
+	(IF (ID val) < INTLIT 10) (|| (ID val) EQUALS INTLIT 5)))  {
+
+	(EQSIGN (ID val) INTLIT 10)
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID val) INTLIT 5)
+
+	}
+
+
+	(RETURN (ID val))
+
+	}
+
+
+}

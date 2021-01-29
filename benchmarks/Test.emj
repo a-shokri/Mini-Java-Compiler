@@ -1,0 +1,69 @@
+class Example {
+
+  public static void main(String [] args) {
+    System.out.println(new B().foo());
+  }
+
+}
+
+class B extends A/*Fac*/ {
+
+  //int val;
+  Fac varFac;
+    String f;
+  Fac varG;
+
+  public int foo() {
+
+    Fac dfdf;
+    //dfd.hfg();
+    String s;
+    boolean b;
+     s = "Hi";
+    //val = s;
+    b = dfdf.stop(1);
+    val = 42;
+    return val;
+
+  }
+
+/*  public int stop() {
+      System.out.println("stop()");
+     return 0;
+  }
+*/
+}
+
+class Fac {
+
+    public int ComputeFac(int num, int num1) {
+    //Fac f;
+	int num_aux ;
+
+	if (num < 1 || num == 0)
+	    num_aux = 1 ;
+	else
+	    num_aux = num * (this.ComputeFac(num,1)) ;
+
+	return num_aux ;
+
+    }
+
+    public boolean stop(int param1) {
+         // System.out.println("stop()");
+         return 0;
+    }
+
+}
+
+class A {
+
+  int val;
+
+  public int foo() {
+    boolean val;
+    val = false;
+    return 41;
+  }
+
+}

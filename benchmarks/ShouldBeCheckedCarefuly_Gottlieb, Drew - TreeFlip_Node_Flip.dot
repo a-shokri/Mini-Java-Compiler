@@ -1,0 +1,15 @@
+digraph Flip {
+N60 -> N62 [label=" ([m_hasLeft])"];
+N62 -> N64 [label=" sidef(m_left.Flip())"];
+N64 -> N69 [label=" ([m_hasRight])"];
+N69 -> N71 [label=" sidef(m_right.Flip())"];
+N71 -> N76 [label=" tempNode = m_left"];
+N76 -> N78 [label=" m_left = m_right"];
+N78 -> N80 [label=" m_right = tempNode"];
+N80 -> N82 [label=" tempBool = m_hasLeft"];
+N82 -> N84 [label=" m_hasLeft = m_hasRight"];
+N84 -> N86 [label=" m_hasRight = tempBool"];
+N64 -> N71 [label=" (![m_hasRight])"];
+N60 -> N64 [label=" (![m_hasLeft])"];
+}
+

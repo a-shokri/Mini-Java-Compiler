@@ -1,0 +1,302 @@
+(MAIN-CLASS (ID ArrayUtil))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+(SIDEF NEW-INSTANCE (ID Test) DOT (FUN-CALL (ID start)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID Test))  {
+
+
+	(MTD-DECL INT-ARRAY (ID genArr) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID arr))
+
+	(EQSIGN (ID arr) NEW-INT_ARRAYINTLIT 3))
+
+	(RETURN (ID arr))
+
+	}
+
+	(MTD-DECL INT (ID start) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL (ID (ID Underscore)) (ID und))
+
+	(VAR-DECL INT-ARRAY (ID arr))
+
+	(EQSIGN (ID und) NEW-INSTANCE (ID Underscore))
+
+	(EQSIGN (ID arr) THIS DOT (FUN-CALL (ID genArr)))
+
+	(PRINTLN ((ID und) DOT (FUN-CALL (ID toString))((ID arr))))
+
+	(PRINTLN ((ID und) DOT (FUN-CALL (ID toString))((ID und) DOT (FUN-CALL (ID map))((ID arr))(NEW-INSTANCE (ID Double)))))
+
+	(PRINTLN ((ID und) DOT (FUN-CALL (ID toString))((ID und) DOT (FUN-CALL (ID filter))((ID arr))(NEW-INSTANCE (ID Positive)))))
+
+	(PRINTLN (STRINGLIT  PLUS (ID und) DOT (FUN-CALL (ID reduce))((ID arr))(NEW-INSTANCE (ID Sum))(INTLIT 0))))
+
+	(PRINTLN (STRINGLIT  PLUS (ID und) DOT (FUN-CALL (ID reduce))((ID arr))(NEW-INSTANCE (ID Sum))(INTLIT 20))))
+
+	(RETURN INTLIT 0)
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Underscore))  {
+
+
+	(MTD-DECL STRING (ID toString) (TY-ID-LIST (INT-ARRAY (ID arr)))  {
+
+	(BLOCK
+
+	(VAR-DECL STRING (ID str))
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID len))
+
+	(EQSIGN (ID len) (ID arr)DOT LENGTH)
+
+	(EQSIGN (ID str) STRINGLIT [)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID len))
+	(IF (ID i) EQUALS (ID len) MINUS INTLIT 1)))  {
+
+	(EQSIGN (ID str) (ID str) PLUS (ID arr)))
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID str) (ID str) PLUS (ID arr)  PLUS STRINGLIT , )))
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ID str) (ID str) PLUS STRINGLIT ]))
+
+	(RETURN (ID str))
+
+	}
+
+	(MTD-DECL INT-ARRAY (ID map) (TY-ID-LIST (INT-ARRAY (ID arr)) ((ID (ID IMapper)) (ID fn)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID res))
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID len))
+
+	(EQSIGN (ID len) (ID arr)DOT LENGTH)
+
+	(EQSIGN (ID res) NEW-INT_ARRAY(ID len)))
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID len))
+	(EQSIGN (ARRAY-ASSIGN (ID res)(ID i)(ID fn) DOT (FUN-CALL (ID apply))((ID arr))
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID res))
+
+	}
+
+	(MTD-DECL INT-ARRAY (ID filter) (TY-ID-LIST (INT-ARRAY (ID arr)) ((ID (ID IFilter)) (ID fn)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID res))
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID len))
+
+	(VAR-DECL INT (ID res_i))
+
+	(EQSIGN (ID len) (ID arr)DOT LENGTH)
+
+	(EQSIGN (ID res) NEW-INT_ARRAY(ID len)))
+
+	(EQSIGN (ID res_i) INTLIT 0)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID len))
+	(IF (ID fn) DOT (FUN-CALL (ID apply))((ID arr)))  {
+
+	(EQSIGN (ARRAY-ASSIGN (ID res)(ID res_i)(ID arr)
+
+	(EQSIGN (ID res_i) (ID res_i) PLUS INTLIT 1))
+
+
+	}
+
+	}
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN THIS DOT (FUN-CALL (ID cut))((ID res))((ID res_i)))
+
+	}
+
+	(MTD-DECL INT-ARRAY (ID cut) (TY-ID-LIST (INT-ARRAY (ID arr)) (INT (ID size)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID temp))
+
+	(VAR-DECL INT (ID i))
+
+	(EQSIGN (ID temp) NEW-INT_ARRAY(ID size)))
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID size))
+	(EQSIGN (ARRAY-ASSIGN (ID temp)(ID i)(ID arr)
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID temp))
+
+	}
+
+	(MTD-DECL INT (ID reduce) (TY-ID-LIST (INT-ARRAY (ID arr)) ((ID (ID IReducer)) (ID fn)) (INT (ID acc)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID len))
+
+	(EQSIGN (ID len) (ID arr)DOT LENGTH)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID len))
+	(EQSIGN (ID acc) (ID fn) DOT (FUN-CALL (ID apply))((ID acc))((ID arr)))
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID acc))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID IMapper))  {
+
+
+	(MTD-DECL INT (ID apply) (TY-ID-LIST (INT (ID i)))  {
+
+	(BLOCK
+
+	(RETURN (ID i))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Double) EXTENDS (ID IMapper))  {
+
+
+	(MTD-DECL INT (ID apply) (TY-ID-LIST (INT (ID i)))  {
+
+	(BLOCK
+
+	(RETURN (ID i) PLUS (ID i)))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID IFilter))  {
+
+
+	(MTD-DECL BOOLEAN (ID apply) (TY-ID-LIST (INT (ID i)))  {
+
+	(BLOCK
+
+	(RETURN TRUE)
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Positive) EXTENDS (ID IFilter))  {
+
+
+	(MTD-DECL BOOLEAN (ID apply) (TY-ID-LIST (INT (ID i)))  {
+
+	(BLOCK
+
+	(RETURN (!((ID i) < INTLIT 0))))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID IReducer))  {
+
+
+	(MTD-DECL INT (ID apply) (TY-ID-LIST (INT (ID acc)) (INT (ID cur)))  {
+
+	(BLOCK
+
+	(RETURN (ID acc))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Sum) EXTENDS (ID IReducer))  {
+
+
+	(MTD-DECL INT (ID apply) (TY-ID-LIST (INT (ID acc)) (INT (ID cur)))  {
+
+	(BLOCK
+
+	(RETURN (ID acc) PLUS (ID cur)))
+
+	}
+
+
+}

@@ -1,0 +1,123 @@
+(MAIN-CLASS (ID Operators))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+(SIDEF NEW-INSTANCE (ID Program) DOT (FUN-CALL (ID Run)))
+
+	}
+
+}
+
+(CLASS-DECL (ID Program))  {
+
+
+	(MTD-DECL INT (ID Run) (No Parameters)  {
+
+		(BLOCK
+
+			(PRINTLN (STRINGLIT Result =  PLUS NEW-INSTANCE (ID Sum) DOT (FUN-CALL (ID SetLeft))(NEW-INSTANCE (ID Term) DOT (FUN-CALL (ID SetValue))(INTLIT 2)))))
+
+			(RETURN INTLIT 0)
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Expression))  {
+
+
+		(MTD-DECL INT (ID eval) (No Parameters)  {
+
+			(BLOCK
+
+				(RETURN INTLIT 0)
+
+		}
+
+
+}
+		
+(CLASS-DECL (ID Operation) EXTENDS (ID Expression))  {
+
+			(VAR-DECL (ID (ID Expression)) (ID lhs))
+
+			(VAR-DECL (ID (ID Expression)) (ID rhs))
+
+
+			(MTD-DECL (ID (ID Operation)) (ID SetLeft) (TY-ID-LIST ((ID (ID Expression)) (ID e)))  {
+
+				(BLOCK
+
+					(EQSIGN (ID lhs) (ID e))
+
+					(RETURN THIS)
+
+			}
+
+			(MTD-DECL (ID (ID Operation)) (ID SetRight) (TY-ID-LIST ((ID (ID Expression)) (ID e)))  {
+
+				(BLOCK
+
+					(EQSIGN (ID rhs) (ID e))
+
+					(RETURN THIS)
+
+			}
+
+
+}
+			
+(CLASS-DECL (ID Sum) EXTENDS (ID Operation))  {
+
+
+				(MTD-DECL INT (ID eval) (No Parameters)  {
+
+					(BLOCK
+
+						(RETURN (ID lhs) DOT (FUN-CALL (ID eval)) PLUS (ID rhs) DOT (FUN-CALL (ID eval))))
+
+				}
+
+
+}
+				
+(CLASS-DECL (ID Product) EXTENDS (ID Operation))  {
+
+
+					(MTD-DECL INT (ID eval) (No Parameters)  {
+
+						(BLOCK
+
+							(RETURN (ID lhs) DOT (FUN-CALL (ID eval)) TIMES (ID rhs) DOT (FUN-CALL (ID eval))))
+
+					}
+
+
+}
+					
+(CLASS-DECL (ID Term) EXTENDS (ID Expression))  {
+
+						(VAR-DECL INT (ID value))
+
+
+						(MTD-DECL (ID (ID Term)) (ID SetValue) (TY-ID-LIST (INT (ID v)))  {
+
+							(BLOCK
+
+								(EQSIGN (ID value) (ID v))
+
+								(RETURN THIS)
+
+						}
+
+						(MTD-DECL INT (ID eval) (No Parameters)  {
+
+							(BLOCK
+
+								(RETURN (ID value))
+
+						}
+
+
+}

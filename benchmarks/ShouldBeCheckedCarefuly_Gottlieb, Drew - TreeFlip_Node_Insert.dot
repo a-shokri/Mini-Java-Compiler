@@ -1,0 +1,13 @@
+digraph Insert {
+N33 -> N35 [label=" ([value < m_value])"];
+N35 -> N40 [label=" ([m_hasLeft])"];
+N40 -> N37 [label=" sidef(m_left.Insert(value))"];
+N35 -> N41 [label=" (![m_hasLeft])"];
+N41 -> N37 [label=" sidef(this.SetLeft(new Node().Init(value)))"];
+N33 -> N36 [label=" (![value < m_value])"];
+N36 -> N51 [label=" ([m_hasRight])"];
+N51 -> N37 [label=" sidef(m_right.Insert(value))"];
+N36 -> N52 [label=" (![m_hasRight])"];
+N52 -> N37 [label=" sidef(this.SetRight(new Node().Init(value)))"];
+}
+

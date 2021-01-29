@@ -1,0 +1,363 @@
+(MAIN-CLASS (ID BinarySearch))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID a))  {
+
+		(PRINTLN (NEW-INSTANCE (ID BS) DOT (FUN-CALL (ID Start))(INTLIT 20)))
+
+	}
+
+}
+
+(CLASS-DECL (ID BS))  {
+
+	(VAR-DECL INT-ARRAY (ID number))
+
+	(VAR-DECL INT (ID size))
+
+
+	(MTD-DECL INT (ID Start) (TY-ID-LIST (INT (ID sz)))  {
+
+		(BLOCK
+
+			(VAR-DECL INT (ID aux01))
+
+			(VAR-DECL INT (ID aux02))
+
+			(EQSIGN (ID aux01) THIS DOT (FUN-CALL (ID Init))((ID sz)))
+
+			(EQSIGN (ID aux02) THIS DOT (FUN-CALL (ID Print)))
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 8))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 19))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 20))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 21))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 37))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 38))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 39))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(IF THIS DOT (FUN-CALL (ID Search))(INTLIT 50))  {
+
+				(PRINTLN (INTLIT 1))
+
+			}
+
+			(ELSE)  {
+
+			(PRINTLN (INTLIT 0))
+
+			}
+
+
+			(RETURN INTLIT 999)
+
+	}
+
+	(MTD-DECL BOOLEAN (ID Search) (TY-ID-LIST (INT (ID num)))  {
+
+		(BLOCK
+
+			(VAR-DECL BOOLEAN (ID bs01))
+
+			(VAR-DECL INT (ID right))
+
+			(VAR-DECL INT (ID left))
+
+			(VAR-DECL BOOLEAN (ID var_cont))
+
+			(VAR-DECL INT (ID medium))
+
+			(VAR-DECL INT (ID aux01))
+
+			(VAR-DECL INT (ID nt))
+
+			(EQSIGN (ID aux01) INTLIT 0)
+
+			(EQSIGN (ID bs01) FALSE)
+
+			(EQSIGN (ID right) (ID number)DOT LENGTH)
+
+			(EQSIGN (ID right) (ID right) MINUS INTLIT 1))
+
+			(EQSIGN (ID left) INTLIT 0)
+
+			(EQSIGN (ID var_cont) TRUE)
+
+			(WHILE (ID var_cont)
+				(EQSIGN (ID medium) (ID left) PLUS (ID right)))
+
+				(EQSIGN (ID medium) THIS DOT (FUN-CALL (ID Div))((ID medium)))
+
+				(EQSIGN (ID aux01) (ID number))
+
+				(IF (ID num) < (ID aux01)))  {
+
+					(EQSIGN (ID right) (ID medium) MINUS INTLIT 1))
+
+				}
+
+				(ELSE)  {
+
+				(EQSIGN (ID left) (ID medium) PLUS INTLIT 1))
+
+				}
+
+
+				(IF THIS DOT (FUN-CALL (ID Compare))((ID aux01))((ID num)))  {
+
+					(EQSIGN (ID var_cont) FALSE)
+
+				}
+
+				(ELSE)  {
+
+				(EQSIGN (ID var_cont) TRUE)
+
+				}
+
+
+				(IF (ID right) < (ID left)))  {
+
+					(EQSIGN (ID var_cont) FALSE)
+
+				}
+
+				(ELSE)  {
+
+				(EQSIGN (ID nt) INTLIT 0)
+
+				}
+
+
+			)
+
+
+			(IF THIS DOT (FUN-CALL (ID Compare))((ID aux01))((ID num)))  {
+
+				(EQSIGN (ID bs01) TRUE)
+
+			}
+
+			(ELSE)  {
+
+			(EQSIGN (ID bs01) FALSE)
+
+			}
+
+
+			(RETURN (ID bs01))
+
+	}
+
+	(MTD-DECL INT (ID Div) (TY-ID-LIST (INT (ID num)))  {
+
+		(BLOCK
+
+			(VAR-DECL INT (ID count01))
+
+			(VAR-DECL INT (ID count02))
+
+			(VAR-DECL INT (ID aux03))
+
+			(EQSIGN (ID count01) INTLIT 0)
+
+			(EQSIGN (ID count02) INTLIT 0)
+
+			(EQSIGN (ID aux03) (ID num) MINUS INTLIT 1))
+
+			(WHILE (ID count02) < (ID aux03))
+				(EQSIGN (ID count01) (ID count01) PLUS INTLIT 1))
+
+				(EQSIGN (ID count02) (ID count02) PLUS INTLIT 2))
+
+			)
+
+
+			(RETURN (ID count01))
+
+	}
+
+	(MTD-DECL BOOLEAN (ID Compare) (TY-ID-LIST (INT (ID num1)) (INT (ID num2)))  {
+
+		(BLOCK
+
+			(VAR-DECL BOOLEAN (ID retval))
+
+			(VAR-DECL INT (ID aux02))
+
+			(EQSIGN (ID retval) FALSE)
+
+			(EQSIGN (ID aux02) (ID num2) PLUS INTLIT 1))
+
+			(IF (ID num1) < (ID num2)))  {
+
+				(EQSIGN (ID retval) FALSE)
+
+			}
+
+			(ELSE)  {
+
+			(IF (!((ID num1) < (ID aux02)))))  {
+
+				(EQSIGN (ID retval) FALSE)
+
+			}
+
+			(ELSE)  {
+
+			(EQSIGN (ID retval) TRUE)
+
+			}
+
+
+			}
+
+
+			(RETURN (ID retval))
+
+	}
+
+	(MTD-DECL INT (ID Print) (No Parameters)  {
+
+		(BLOCK
+
+			(VAR-DECL INT (ID j))
+
+			(EQSIGN (ID j) INTLIT 1)
+
+			(WHILE (ID j) < ((ID size)))
+				(PRINTLN ((ID number)))
+
+				(EQSIGN (ID j) (ID j) PLUS INTLIT 1))
+
+			)
+
+
+			(PRINTLN (INTLIT 99999))
+
+			(RETURN INTLIT 0)
+
+	}
+
+	(MTD-DECL INT (ID Init) (TY-ID-LIST (INT (ID sz)))  {
+
+		(BLOCK
+
+			(VAR-DECL INT (ID j))
+
+			(VAR-DECL INT (ID k))
+
+			(VAR-DECL INT (ID aux02))
+
+			(VAR-DECL INT (ID aux01))
+
+			(EQSIGN (ID size) (ID sz))
+
+			(EQSIGN (ID number) NEW-INT_ARRAY(ID sz)))
+
+			(EQSIGN (ID j) INTLIT 1)
+
+			(EQSIGN (ID k) (ID size) PLUS INTLIT 1))
+
+			(WHILE (ID j) < ((ID size)))
+				(EQSIGN (ID aux01) INTLIT 2 TIMES (ID j)))
+
+				(EQSIGN (ID aux02) (ID k) MINUS INTLIT 3))
+
+				(EQSIGN (ARRAY-ASSIGN (ID number)(ID j)(ID aux01) PLUS (ID aux02))
+
+				(EQSIGN (ID j) (ID j) PLUS INTLIT 1))
+
+				(EQSIGN (ID k) (ID k) MINUS INTLIT 1))
+
+			)
+
+
+			(RETURN INTLIT 0)
+
+	}
+
+
+}

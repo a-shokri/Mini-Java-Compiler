@@ -1,0 +1,105 @@
+//author: Ali Shokri & Manan Joshi
+
+
+class MainClass {
+
+    public static void main(String[] args) {
+
+        System.out.println( new BinarySearch().doTheSearch() );
+
+    }
+}
+ class BinarySearch {
+
+    public String doTheSearch(){
+        int[] elementsArray;
+        int n;
+        int searchElement;
+        int result;
+        String ret;
+
+        elementsArray = new int[10];
+
+        //C B Ali: As our compiler does not support a[i] = j; I had to comment bellow lines. they have to be un-commented
+        elementsArray[0] = 86;
+        elementsArray[1] = 97;
+        elementsArray[2] = 77;
+        elementsArray[3] = 39;
+        elementsArray[4] = 84;
+        elementsArray[5] = 45;
+        elementsArray[6] = 86;
+        elementsArray[7] = 21;
+        elementsArray[8] = 13;
+        elementsArray[9] = 77;
+
+         n = elementsArray.length;
+
+         searchElement = 10;
+
+         result = new BinarySearch().binarySearch(this.bubbleSort(elementsArray), 0, n - 1, searchElement);
+
+        // C B Ali. Seems we do not support negative numbers!
+         if (result == -1)
+        //if(result < 0 )
+            ret = "Element not present";
+        else
+            ret = "Element found at index " + result;
+        return ret;
+
+    }
+
+    public int[] bubbleSort(int[] elements) {
+               int i;
+            int j;
+            int n;
+            int temp;
+             n = elements.length;
+            i = 0;
+            while ( i < n - 1 ) {
+                j = 0;
+                while( j < n - i - 1 ){
+
+                    if (elements[j] > elements[j + 1]) {
+                        // swap temp and arr[i]
+                         temp = elements[j];
+                        elements[j] = elements[j + 1];
+                        elements[j + 1] = temp;
+
+                    }
+                    j = j + 1;
+                }
+                i = i+1;
+            }
+
+        return elements;
+
+    }
+
+    public int binarySearch(int[] elements, int left, int right, int searchElement) {
+        int mid;
+        int ret;
+        // C B Ali
+        ret = -1;
+        //ret = 0-1;
+        if (right >= left && ret == (0-1)) {
+            mid = left + (right - left) / 2;
+
+            if (elements[mid] == searchElement)
+                ret = mid;
+
+            // C B Ali
+            if (ret == -1 && elements[mid] > searchElement)
+            // if (ret == (0-1) && elements[mid] > searchElement)
+
+                ret = this.binarySearch(elements, left, mid - 1, searchElement);
+
+            ret = this.binarySearch(elements, mid + 1, right, searchElement);
+
+        }
+
+        return ret;
+
+    }
+
+
+}

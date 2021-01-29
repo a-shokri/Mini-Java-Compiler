@@ -1,0 +1,9 @@
+digraph gcd {
+N4 -> N6 [label=" ([m == n])"];
+N6 -> N8 [label=" result = n"];
+N8 -> N17 [label="result"];
+N4 -> N7 [label=" (![m == n])"];
+N7 -> N13 [label=" gcdSeed = this.gcdAllEven(m,n)"];
+N13 -> N8 [label=" result = timesDividedBy2 * gcdSeed"];
+}
+

@@ -1,0 +1,83 @@
+(MAIN-CLASS (ID FracReduce))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (STRINGLIT  PLUS NEW-INSTANCE (ID GCD) DOT (FUN-CALL (ID reduceFrac))(INTLIT 1920)(INTLIT 1080))))
+
+	(PRINTLN (STRINGLIT  PLUS NEW-INSTANCE (ID GCD) DOT (FUN-CALL (ID reduceFrac))(INTLIT 2560)(INTLIT 1600))))
+
+	(PRINTLN (STRINGLIT  PLUS NEW-INSTANCE (ID GCD) DOT (FUN-CALL (ID reduceFrac))(INTLIT 480)(INTLIT 800))))
+
+	(PRINTLN (STRINGLIT  PLUS NEW-INSTANCE (ID GCD) DOT (FUN-CALL (ID reduceFrac))(INTLIT 42)(INTLIT 56))))
+
+
+	}
+
+	}
+	
+(CLASS-DECL (ID GCD))  {
+
+
+	(MTD-DECL STRING (ID reduceFrac) (TY-ID-LIST (INT (ID a)) (INT (ID b)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID gcd))
+
+	(VAR-DECL INT (ID ratioA))
+
+	(VAR-DECL INT (ID ratioB))
+
+	(EQSIGN (ID gcd) THIS DOT (FUN-CALL (ID GCD))((ID a))((ID b)))
+
+	(EQSIGN (ID ratioA) (ID a) DIV (ID gcd)))
+
+	(EQSIGN (ID ratioB) (ID b) DIV (ID gcd)))
+
+	(RETURN (STRINGLIT Reducing  PLUS (ID a)  PLUS STRINGLIT :  PLUS (ID b)  PLUS STRINGLIT  ->   PLUS (ID ratioA)  PLUS STRINGLIT :  PLUS (ID ratioB)  PLUS STRINGLIT , gcd is   PLUS (ID gcd))))))))))))
+
+	}
+
+	(MTD-DECL INT (ID GCD) (TY-ID-LIST (INT (ID a)) (INT (ID b)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID ret))
+
+	(IF (ID a) < INTLIT 0) (|| (ID b) < INTLIT 0)  (|| (ID b) EQUALS INTLIT 0))))  {
+
+	(EQSIGN (ID ret) INTLIT 0 MINUS INTLIT 1))
+
+
+	}
+
+	(ELSE)  {
+
+	(WHILE (ID b) < (ID a)) (|| (ID b) EQUALS (ID a)))
+	(EQSIGN (ID a) (ID a) MINUS (ID b)))
+	)
+
+
+	(IF (ID a) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID ret) (ID b))
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID ret) THIS DOT (FUN-CALL (ID GCD))((ID b))((ID a)))
+
+	}
+
+
+
+	}
+
+
+	(RETURN (ID ret))
+
+	}
+
+
+}

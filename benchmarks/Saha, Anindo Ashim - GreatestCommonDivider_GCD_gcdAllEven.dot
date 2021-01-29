@@ -1,0 +1,16 @@
+digraph gcdAllEven {
+N18 -> N20 [label=" a = m / 2"];
+N20 -> N22 [label=" b = n / 2"];
+N22 -> N24 [label=" ([a * 2 == m && b * 2 == n])"];
+N24 -> N29 [label=" m = a"];
+N29 -> N31 [label=" n = b"];
+N31 -> N33 [label=" timesDividedBy2 = timesDividedBy2 * 2"];
+N33 -> N26 [label=" result = this.gcdAllEven(m,n)"];
+N26 -> N46 [label="result"];
+N22 -> N25 [label=" (![a * 2 == m && b * 2 == n])"];
+N25 -> N38 [label=" ([n < m])"];
+N38 -> N26 [label=" result = this.gcdMinus(m,n)"];
+N25 -> N39 [label=" (![n < m])"];
+N39 -> N26 [label=" result = this.gcdMinus(n,m)"];
+}
+

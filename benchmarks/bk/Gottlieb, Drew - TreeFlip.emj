@@ -1,0 +1,119 @@
+//
+// TreeFlip.emj
+//
+// Constructs a binary tree, recursively prints it in ascending order, then
+// flips the tree in-place and prints it again in descending order.
+//
+// Drew Gottlieb <dag1191@rit.edu>
+//
+
+class TreeFlip {
+  public static void main(String[] args) {
+    sidef(new Program().Run());
+  }
+}
+
+class Program {
+  public int Run() {
+    Node tree;
+    tree = new Node()
+        .Init(5)
+        .Insert(3)
+        .Insert(4)
+        .Insert(4)
+        .Insert(8)
+        .Insert(1)
+        .Insert(6)
+        .Insert(7)
+        .Insert(9);
+
+    System.out.println("Original tree:");
+    sidef(tree.Print());
+
+    sidef(tree.Flip());
+
+    System.out.println("");
+    System.out.println("Flipped tree:");
+    sidef(tree.Print());
+
+    return 0;
+  }
+}
+
+class Node {
+  boolean m_hasLeft;
+  Node m_left;
+  boolean m_hasRight;
+  Node m_right;
+  int m_value;
+
+  public Node Init(int value) {
+    m_hasLeft = false;
+    m_hasRight = false;
+    m_value = value;
+    return this;
+  }
+
+  public Node SetLeft(Node node) {
+    m_left = node;
+    m_hasLeft = true;
+    return this;
+  }
+
+  public Node SetRight(Node node) {
+    m_right = node;
+    m_hasRight = true;
+    return this;
+  }
+
+  public Node Insert(int value) {
+    if (value < m_value) {
+      if (m_hasLeft) {
+        sidef(m_left.Insert(value));
+      } else {
+        sidef(this.SetLeft(new Node().Init(value)));
+      }
+    } else {
+      if (m_hasRight) {
+        sidef(m_right.Insert(value));
+      } else {
+        sidef(this.SetRight(new Node().Init(value)));
+      }
+    }
+    return this;
+  }
+
+  public Node Flip() {
+    Node tempNode;
+    boolean tempBool;
+
+    if (m_hasLeft) {
+      sidef(m_left.Flip());
+    }
+    if (m_hasRight) {
+      sidef(m_right.Flip());
+    }
+
+    tempNode = m_left;
+    m_left = m_right;
+    m_right = tempNode;
+
+    tempBool = m_hasLeft;
+    m_hasLeft = m_hasRight;
+    m_hasRight = tempBool;
+
+    return this;
+  }
+
+  public int Print() {
+    if (m_hasLeft) {
+      sidef(m_left.Print());
+    }
+    System.out.println(m_value);
+    if (m_hasRight) {
+      sidef(m_right.Print());
+    }
+    return 0;
+  }
+}
+

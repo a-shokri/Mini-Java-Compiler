@@ -1,0 +1,47 @@
+// There were some comments started with slash and then star ... that the compiler did not accept, so I removed them
+
+class FracReduce {
+    public static void main(String[] args) {
+        {
+            System.out.println("" + new GCD().reduceFrac(1920, 1080));
+            System.out.println("" + new GCD().reduceFrac(2560, 1600));
+            System.out.println("" + new GCD().reduceFrac(480, 800));
+            System.out.println("" + new GCD().reduceFrac(42, 56));
+        }
+    }
+}
+
+class GCD {
+
+    public String reduceFrac(int a, int b) {
+        int gcd;
+        int ratioA;
+        int ratioB;
+
+        gcd = this.GCD(a, b);
+        ratioA = a / gcd;
+        ratioB = b / gcd;
+
+        return ("Reducing " + a + ":" + b + " -> " + ratioA + ":" + ratioB + ", gcd is " + gcd);
+    }
+
+
+    public int GCD(int a, int b) {
+        // working around single return stm
+        int ret;
+
+        if (a < 0 || b < 0 || b == 0) {
+            ret = 0 - 1;
+        } else {
+            while (b < a || b == a) 
+                a = a - b;
+
+            if (a == 0) 
+                ret = b;
+            else 
+                ret = this.GCD(b, a);
+        }
+
+        return ret;
+    }
+}

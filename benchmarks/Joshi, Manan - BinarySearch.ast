@@ -1,0 +1,146 @@
+(MAIN-CLASS (ID MainClass))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (NEW-INSTANCE (ID BinarySearch) DOT (FUN-CALL (ID doTheSearch))))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID BinarySearch))  {
+
+
+	(MTD-DECL STRING (ID doTheSearch) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID elementsArray))
+
+	(VAR-DECL INT (ID n))
+
+	(VAR-DECL INT (ID searchElement))
+
+	(VAR-DECL INT (ID result))
+
+	(VAR-DECL STRING (ID ret))
+
+	(EQSIGN (ID elementsArray) NEW-INT_ARRAYINTLIT 10))
+
+	(EQSIGN (ID n) (ID elementsArray)DOT LENGTH)
+
+	(EQSIGN (ID searchElement) INTLIT 10)
+
+	(EQSIGN (ID result) NEW-INSTANCE (ID BinarySearch) DOT (FUN-CALL (ID binarySearch))(THIS DOT (FUN-CALL (ID bubbleSort))((ID elementsArray)))(INTLIT 0)((ID n) MINUS INTLIT 1))((ID searchElement)))
+
+	(IF (ID result) < INTLIT 0))  {
+
+	(EQSIGN (ID ret) STRINGLIT Element not present)
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID ret) STRINGLIT Element found at index  PLUS (ID result)))
+
+	}
+
+
+	(RETURN (ID ret))
+
+	}
+
+	(MTD-DECL INT-ARRAY (ID bubbleSort) (TY-ID-LIST (INT-ARRAY (ID elements)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID j))
+
+	(VAR-DECL INT (ID n))
+
+	(VAR-DECL INT (ID temp))
+
+	(EQSIGN (ID n) (ID elements)DOT LENGTH)
+
+	(EQSIGN (ID i) INTLIT 0)
+
+	(WHILE (ID i) < (ID n) MINUS INTLIT 1))
+	(EQSIGN (ID j) INTLIT 0)
+
+	(WHILE (ID j) < (ID n) MINUS (ID i)  MINUS INTLIT 1)))
+	(IF (ID elements) < (ID elements)))  {
+
+	(EQSIGN (ID temp) (ID elements))
+
+	(EQSIGN (ARRAY-ASSIGN (ID elements)(ID j)(ID elements)
+
+	(EQSIGN (ARRAY-ASSIGN (ID elements)(ID j) PLUS INTLIT 1)(ID temp)
+
+
+	}
+
+	}
+
+
+	(EQSIGN (ID j) (ID j) PLUS INTLIT 1))
+
+	)
+
+
+	(EQSIGN (ID i) (ID i) PLUS INTLIT 1))
+
+	)
+
+
+	(RETURN (ID elements))
+
+	}
+
+	(MTD-DECL INT (ID binarySearch) (TY-ID-LIST (INT-ARRAY (ID elements)) (INT (ID left)) (INT (ID right)) (INT (ID searchElement)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID mid))
+
+	(VAR-DECL INT (ID ret))
+
+	(EQSIGN (ID ret) INTLIT 0 MINUS INTLIT 1))
+
+	(IF (ID right) < (ID left)) (&& (ID ret) EQUALS (INTLIT 0 MINUS INTLIT 1)))))  {
+
+	(EQSIGN (ID mid) (ID left) PLUS ((ID right) MINUS (ID left))) DIV INTLIT 2)))
+
+	(IF (ID elements) EQUALS (ID searchElement)))  {
+
+	(EQSIGN (ID ret) (ID mid))
+
+	}
+
+	}
+
+
+	(IF (ID ret) EQUALS (INTLIT 0 MINUS INTLIT 1))) (&& (ID elements) < (ID searchElement))))  {
+
+	(EQSIGN (ID ret) THIS DOT (FUN-CALL (ID binarySearch))((ID elements))((ID left))((ID mid) MINUS INTLIT 1))((ID searchElement)))
+
+	}
+
+	}
+
+
+	(EQSIGN (ID ret) THIS DOT (FUN-CALL (ID binarySearch))((ID elements))((ID mid) PLUS INTLIT 1))((ID right))((ID searchElement)))
+
+
+	}
+
+	}
+
+
+	(RETURN (ID ret))
+
+	}
+
+
+}

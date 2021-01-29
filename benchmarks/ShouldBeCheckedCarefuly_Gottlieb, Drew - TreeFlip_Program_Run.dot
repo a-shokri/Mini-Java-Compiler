@@ -1,0 +1,10 @@
+digraph Run {
+N1 -> N3 [label=" tree = new Node().Init(5).Insert(3).Insert(4).Insert(4).Insert(8).Insert(1).Insert(6).Insert(7).Insert(9)"];
+N3 -> N5 [label=" System.out.println(\"Original tree:\")"];
+N5 -> N7 [label=" sidef(tree.Print())"];
+N7 -> N9 [label=" sidef(tree.Flip())"];
+N9 -> N11 [label=" System.out.println(\"\")"];
+N11 -> N13 [label=" System.out.println(\"Flipped tree:\")"];
+N13 -> N15 [label=" sidef(tree.Print())"];
+}
+

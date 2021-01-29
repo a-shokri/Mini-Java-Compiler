@@ -1,0 +1,237 @@
+(MAIN-CLASS (ID MainClass))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+	(PRINTLN (STRINGLIT  PLUS NEW-INSTANCE (ID MedianSortedArray) DOT (FUN-CALL (ID findMedianSortedArrays)))))
+
+
+	}
+
+	}
+	
+(CLASS-DECL (ID MedianSortedArray))  {
+
+
+	(MTD-DECL INT (ID findMedianSortedArrays) (No Parameters)  {
+
+	(BLOCK
+
+	(VAR-DECL INT-ARRAY (ID A))
+
+	(VAR-DECL INT-ARRAY (ID B))
+
+	(VAR-DECL INT (ID m))
+
+	(VAR-DECL INT (ID n))
+
+	(VAR-DECL INT-ARRAY (ID temp))
+
+	(VAR-DECL INT (ID tmp))
+
+	(VAR-DECL INT (ID iMin))
+
+	(VAR-DECL INT (ID iMax))
+
+	(VAR-DECL INT (ID halfLen))
+
+	(VAR-DECL INT (ID i))
+
+	(VAR-DECL INT (ID j))
+
+	(VAR-DECL INT (ID maxLeft))
+
+	(VAR-DECL INT (ID minRight))
+
+	(VAR-DECL INT (ID ret))
+
+	(EQSIGN (ID ret) INTLIT 0)
+
+	(EQSIGN (ID m) (ID A)DOT LENGTH)
+
+	(EQSIGN (ID n) (ID B)DOT LENGTH)
+
+	(IF (ID m) < (ID n)))  {
+
+	(EQSIGN (ID temp) (ID A))
+
+	(EQSIGN (ID A) (ID B))
+
+	(EQSIGN (ID B) (ID temp))
+
+	(EQSIGN (ID tmp) (ID m))
+
+	(EQSIGN (ID m) (ID n))
+
+	(EQSIGN (ID n) (ID tmp))
+
+
+	}
+
+	}
+
+
+	(EQSIGN (ID iMin) INTLIT 0)
+
+	(EQSIGN (ID iMax) (ID m))
+
+	(EQSIGN (ID halfLen) ((ID m) PLUS (ID n)  PLUS INTLIT 1))) DIV INTLIT 2))
+
+	(WHILE (ID iMin) < (ID iMax)) (&& (ID ret) EQUALS INTLIT 0))
+	(EQSIGN (ID i) ((ID iMin) PLUS (ID iMax))) DIV INTLIT 2))
+
+	(EQSIGN (ID j) (ID halfLen) MINUS (ID i)))
+
+	(IF (ID i) < (ID iMax)) (&& (ID B) < (ID A))))  {
+
+	(EQSIGN (ID iMin) (ID iMin) PLUS INTLIT 1))
+
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID i) < (ID iMin)) (&& (ID A) < (ID B))))  {
+
+	(EQSIGN (ID iMax) (ID iMax) MINUS INTLIT 1))
+
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID maxLeft) INTLIT 0)
+
+	(IF (ID i) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID maxLeft) (ID B))
+
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID j) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID maxLeft) (ID A))
+
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID maxLeft) THIS DOT (FUN-CALL (ID max))((ID A))((ID B)))
+
+
+	}
+
+
+	}
+
+
+	(IF (ID m) PLUS (ID n)  MINUS (((ID m) PLUS (ID n))) DIV INTLIT 2)) TIMES ((ID m) PLUS (ID n)))))) EQUALS INTLIT 1))  {
+
+	(EQSIGN (ID ret) (ID maxLeft))
+
+
+	}
+
+	}
+
+
+	(IF (ID ret) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID minRight) INTLIT 0)
+
+	(IF (ID i) EQUALS (ID m)))  {
+
+	(EQSIGN (ID minRight) (ID B))
+
+
+	}
+
+	(ELSE)  {
+
+	(IF (ID j) EQUALS (ID n)))  {
+
+	(EQSIGN (ID minRight) (ID A))
+
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID minRight) THIS DOT (FUN-CALL (ID min))((ID B))((ID A)))
+
+
+	}
+
+
+	}
+
+
+	(EQSIGN (ID ret) ((ID maxLeft) PLUS (ID minRight))) DIV INTLIT 2))
+
+
+	}
+
+	}
+
+
+
+	}
+
+
+	}
+
+
+	)
+
+
+	(RETURN (ID ret))
+
+	}
+
+	(MTD-DECL INT (ID max) (TY-ID-LIST (INT (ID i)) (INT (ID j)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID max))
+
+	(EQSIGN (ID max) (ID i))
+
+	(IF (ID max) < (ID j)))  {
+
+	(EQSIGN (ID max) (ID j))
+
+	}
+
+	}
+
+
+	(RETURN (ID max))
+
+	}
+
+	(MTD-DECL INT (ID min) (TY-ID-LIST (INT (ID i)) (INT (ID j)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID min))
+
+	(EQSIGN (ID min) (ID i))
+
+	(IF (ID min) < (ID j)))  {
+
+	(EQSIGN (ID min) (ID j))
+
+	}
+
+	}
+
+
+	(RETURN (ID min))
+
+	}
+
+
+}

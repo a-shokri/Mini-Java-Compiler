@@ -1,0 +1,6 @@
+digraph Init {
+N16 -> N18 [label=" m_hasLeft = falsefalse"];
+N18 -> N20 [label=" m_hasRight = falsefalse"];
+N20 -> N22 [label=" m_value = value"];
+}
+

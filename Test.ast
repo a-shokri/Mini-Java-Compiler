@@ -1,0 +1,88 @@
+(MAIN-CLASS (ID Example))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID args))  {
+
+		(PRINTLN (NEW-INSTANCE (ID B) DOT (FUN-CALL (ID foo))))
+
+	}
+
+}
+
+(CLASS-DECL (ID B) EXTENDS (ID A))  {
+
+	(VAR-DECL (ID (ID Fac)) (ID varFac))
+
+	(VAR-DECL STRING (ID f))
+
+	(VAR-DECL (ID (ID Fac)) (ID varG))
+
+
+	(MTD-DECL INT (ID foo) (No Parameters)  {
+
+		(BLOCK
+
+			(EQSIGN (ID s) STRINGLIT Hi)
+
+			(EQSIGN (ID b) (ID dfdf) DOT (FUN-CALL (ID stop))(INTLIT 1))
+
+			(EQSIGN (ID val) INTLIT 42)
+
+			(RETURN (ID val))
+
+	}
+
+
+}
+	
+(CLASS-DECL (ID Fac))  {
+
+
+		(MTD-DECL INT (ID ComputeFac) (TY-ID-LIST (INT (ID num)) (INT (ID num1)))  {
+
+			(BLOCK
+
+				(IF (ID num) < INTLIT 1) (|| (ID num) EQUALS INTLIT 0)))  {
+
+					(EQSIGN (ID num_aux) INTLIT 1)
+
+				}
+
+				(ELSE)  {
+
+				(EQSIGN (ID num_aux) (ID num) TIMES (THIS DOT (FUN-CALL (ID ComputeFac))((ID num))(INTLIT 1))))
+
+				}
+
+
+				(RETURN (ID num_aux))
+
+		}
+
+		(MTD-DECL BOOLEAN (ID stop) (TY-ID-LIST (INT (ID param1)))  {
+
+			(BLOCK
+
+				(RETURN INTLIT 0)
+
+		}
+
+
+}
+		
+(CLASS-DECL (ID A))  {
+
+			(VAR-DECL INT (ID val))
+
+
+			(MTD-DECL INT (ID foo) (No Parameters)  {
+
+				(BLOCK
+
+					(EQSIGN (ID val) FALSE)
+
+					(RETURN INTLIT 41)
+
+			}
+
+
+}

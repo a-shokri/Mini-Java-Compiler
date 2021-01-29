@@ -1,0 +1,48 @@
+(MAIN-CLASS (ID Factorial))  {
+
+	(MAIN-FUNCTION (STRING-ARRAY (ID mainarg))  {
+
+	(PRINTLN (NEW-INSTANCE (ID TRFact) DOT (FUN-CALL (ID factorial))(INTLIT 8)))
+
+	}
+
+	}
+	
+(CLASS-DECL (ID TRFact))  {
+
+
+	(MTD-DECL INT (ID factorialHelper) (TY-ID-LIST (INT (ID val)) (INT (ID ans)))  {
+
+	(BLOCK
+
+	(VAR-DECL INT (ID result))
+
+	(IF (ID val) EQUALS INTLIT 0))  {
+
+	(EQSIGN (ID result) (ID ans))
+
+
+	}
+
+	(ELSE)  {
+
+	(EQSIGN (ID result) THIS DOT (FUN-CALL (ID factorialHelper))((ID val) MINUS INTLIT 1))((ID val) TIMES (ID ans))))
+
+
+	}
+
+
+	(RETURN (ID result))
+
+	}
+
+	(MTD-DECL INT (ID factorial) (TY-ID-LIST (INT (ID value)))  {
+
+	(BLOCK
+
+	(RETURN THIS DOT (FUN-CALL (ID factorialHelper))((ID value))(INTLIT 1))
+
+	}
+
+
+}

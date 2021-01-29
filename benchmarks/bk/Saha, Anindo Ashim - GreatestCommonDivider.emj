@@ -1,0 +1,72 @@
+//Author One: Junan Zhao
+//Author Two: Anindo Saha
+//Benchmark Two: GreatestCommonDivider
+
+  class GreatestCommonDivider
+{
+    public static void main(String[] args)
+  {
+      System.out.println(new GCD().run(14400,9600));
+  }
+}  
+   
+  
+  class GCD
+{
+    int timesDividedBy2;  
+          
+    public int run( int m, int n)
+  {
+      timesDividedBy2 = 1; 
+      return this.gcd(m,n);
+  }
+    
+    public int gcd( int m, int n)
+  {
+      int result;
+      int gcdSeed;
+      if(m==n) result = n;
+      else
+        {
+           gcdSeed = this.gcdAllEven(m,n);
+           result = timesDividedBy2*gcdSeed; 
+        }
+      return result;
+  }
+    
+    public int gcdAllEven( int m, int n)
+  {
+      int result;
+      int a;
+      int b;
+      a = m/2;
+      b = n/2;
+      if(a*2==m && b*2==n) 
+        {
+           m = a;
+           n = b;
+           timesDividedBy2 = timesDividedBy2*2;
+           result = this.gcdAllEven(m,n);
+        }
+      else
+        {
+           if(n<m) result = this.gcdMinus(m,n);
+           else result = this.gcdMinus(n,m);
+        }
+      return result;
+  }
+    
+    public int gcdMinus( int m, int n)
+  {
+      int result;
+      int a;
+      a = m - n;
+      if(a==n) result = n;
+      else
+        {
+           if(a<n) result= this.gcdMinus(n,a);
+           else result = this.gcdMinus(a,n);
+        }
+      return result;
+  }
+}

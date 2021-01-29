@@ -1,0 +1,197 @@
+/**
+ * ArrayUtil.emj
+ * Map, Filter, Reduce
+ * 
+ * @authur Xuan Huang
+ */
+
+/**
+ * Single Main Method Class
+ */
+class ArrayUtil {
+  public static void main(String[] args) {
+    sidef(new Test().start());
+  }
+}
+
+/**
+ * Test Driver 
+ */
+class Test{
+  public int[] genArr(){
+    int[] arr;
+    arr = new int[3];
+    arr[0] = 3;
+    arr[1] = 4;
+    arr[2] = 0-5;
+    return arr;
+  }
+
+  public int start(){
+    Underscore _; 
+    int[] arr;
+
+    _ = new Underscore();
+    arr = this.genArr();
+
+    // make compiler crash
+    // System.out.println(Underscore.toString(arr)); 
+
+    System.out.println(_.toString(arr)); 
+    System.out.println(_.toString(_.map(arr, new Double()))); 
+    System.out.println(_.toString(_.filter(arr, new Positive()))); 
+    System.out.println("" + _.reduce(arr, new Sum(), 0)); 
+    System.out.println("" + _.reduce(arr, new Sum(), 20)); 
+
+    return 0;
+  }
+}
+
+
+/**
+ * Underscore Library for array processing
+ * _.toString()
+ * _.map()
+ * _.filter()
+ * _.reduce()
+ */
+class Underscore{
+  /**
+   * Return the string representation of array
+   * @param arr     source arr
+   */
+  public String toString(int[] arr){
+    String str; int i; int len;
+
+    len = arr.length;
+    str = "[";
+    i = 0;
+
+    while (i < len) {
+      if (i == len - 1) 
+        str = str + arr[i];
+      else
+        str = str + arr[i] + ", ";
+      i = i + 1;
+    } 
+    str = str + "]";
+    return str;
+  } 
+
+  /**
+   * Old good mapping fn
+   * @param arr     source arr
+   * @param fn      a concret class impl IMapper interface
+   */
+  public int[] map(int[] arr, IMapper fn){
+    int[] res; int i; int len;
+
+    len = arr.length;
+    res = new int[len];
+    i = 0;
+
+    while (i < len) {
+      res[i] = fn.apply(arr[i]);
+      i = i + 1;
+    } 
+    return res;
+  }
+
+  /**
+   * array filtering
+   * @param arr     source arr
+   * @param fn      a concret class impl IFilter interface
+   */
+  public int[] filter(int[] arr, IFilter fn){
+    int[] res; int i; int len; int res_i;
+
+    len = arr.length;
+    res = new int[len];
+    res_i = 0;
+    i = 0;
+
+    while (i < len) {
+      if(fn.apply(arr[i])){
+        res[res_i] = arr[i];
+        res_i = res_i + 1;
+      }
+      i = i + 1;
+    } 
+
+    return this._cut(res, res_i);
+  }
+
+  /**
+   * Array cutting helper for filter
+   * @param arr   source arr
+   * @param size  size
+   */
+  public int[] _cut(int[] arr, int size){
+    int[] temp; int i;
+
+    temp = new int[size];
+    i = 0;
+
+    while (i < size) {
+      temp[i] = arr[i];
+      i = i + 1;
+    }
+
+    return temp;
+  }
+
+  /**
+   * Reducing with reducer! 
+   * @param arr     source arr
+   * @param fn      a concret class impl IReducer interface
+   * @param acc     init value of acc
+   */
+  public int reduce(int[] arr, IReducer fn, int acc){
+    int i; int len;
+
+    len = arr.length;
+    i = 0;
+
+    while (i < len) {
+      acc = fn.apply(acc, arr[i]);
+      i = i + 1;
+    } 
+    return acc;
+  }
+}
+
+class IMapper {
+  public int apply(int i){
+    return i;
+  }
+}
+
+class Double extends IMapper{
+  public int apply(int i){
+    return i + i;
+  }
+}
+
+class IFilter {
+  public boolean apply(int i){
+    return true;
+  } 
+}
+
+class Positive extends IFilter {
+  public boolean apply(int i){
+    return !(i < 0);
+  }
+} 
+
+class IReducer {
+  public int apply(int acc, int cur){
+    return acc;
+  }
+}
+
+class Sum extends IReducer{
+  public int apply(int acc, int cur){
+    return acc + cur;
+  }
+}

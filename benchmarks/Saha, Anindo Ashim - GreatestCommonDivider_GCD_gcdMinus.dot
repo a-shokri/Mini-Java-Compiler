@@ -1,0 +1,12 @@
+digraph gcdMinus {
+N47 -> N49 [label=" a = m - n"];
+N49 -> N51 [label=" ([a == n])"];
+N51 -> N53 [label=" result = n"];
+N53 -> N66 [label="result"];
+N49 -> N52 [label=" (![a == n])"];
+N52 -> N58 [label=" ([a < n])"];
+N58 -> N53 [label=" result = this.gcdMinus(n,a)"];
+N52 -> N59 [label=" (![a < n])"];
+N59 -> N53 [label=" result = this.gcdMinus(a,n)"];
+}
+
