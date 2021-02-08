@@ -1,4 +1,5 @@
-This package is submitted by Manan Joshi and Ali Shokri as a group.
+
+Authors: Ali Shokri and Manan Joshi.
 
 We have implemented the name analyzer part of the Semantic phase of the Compiler.
 
@@ -12,3 +13,5 @@ Sample usage command: java -jar Compiler <options> <filenames>
                       available are --lex, --ast, --name, --pp and --help.
                       => The filenames attribute allows to specify an array of files to be parsed separated by spaces.
                       However, only those files will be parsed that have an .emj file extension.
+                      
+You may find a complete grammar of Mini-Java from [here](https://www.cambridge.org/resources/052182060X/MCIIJ2e/grammar.htm)                      
