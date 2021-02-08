@@ -1,4 +1,4 @@
-Authors: Ali Shokri and Manan Joshi.
+**Authors:** Ali Shokri and Manan Joshi.
 
 We have implemented the name analyzer part of the Semantic phase of the Compiler.
 
